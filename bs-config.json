@@ -1,0 +1,4 @@
+﻿{
+  "browser": "chrome",
+  "files": [ "./app/**/*.{html, htm, css, js, json, sql, xml}" ]
+}

@@ -1,0 +1,60 @@
+﻿<html>
+<head>
+    <title>Full Loud Whisperer</title>
+    <meta charset="UTF-8">
+    <base href="/">
+    <script>document.write('<base href="' + document.location + '" />');</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--CSS -->
+    <!--<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />-->
+    <link rel="stylesheet" href="assets/css/bootstrap.css" />
+    <!-- Optional theme , we are using downloaded one below -->
+    <!-- this is the theme css downloaded from bootstrap-swatch website based on SLATE theme-->
+    <link href="assets/css/slate-bootstrap-theme.min.css" rel="stylesheet" />
+    <!--<link href="assets/css/spacelab-bootstrap-theme.min.css" rel="stylesheet" />-->
+    <!-- this is local stylesheet -->
+    <link href="assets/css/site.css" rel="stylesheet" />
+    <!-- custom styles for this template carusel -->
+    <link href="assets/css/carousel.css" rel="stylesheet">
+    <!-- spinner style css -->
+    <link href="assets/css/spinnerone.component.css" rel="stylesheet" />
+
+    <!-- 1. Load libraries -->
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/es6-shim/es6-shim.min.js"></script>
+
+    <script src="dist/lib/zone.js"></script>
+    <script src="dist/lib/Reflect.js"></script>
+    <script src="dist/lib/system.src.js"></script>
+    <!-- new ng2-bootstrap namespace-->
+    <script src="dist/lib/ng2-bootstrap.js"></script>
+    <!-- used for page pagination -->
+    <script src="dist/lib/ng2-pagination-bundle.js"></script>
+
+    <!-- 2. Configure SystemJS -->
+    <script src="systemjs.config.js"></script>
+    <script>
+      System.import('app')
+          .then(null, console.error.bind(console))
+          .catch(function (err) { console.error(err); });
+    </script>
+</head>
+
+<!-- 3. Display the application -->
+<body>
+    <my-app>Loading EST Loud Whisperer...</my-app>
+
+    <!-- JAVASCRIPT -->
+    <!--DOES NOT WORK WITHOUT JQUERY AND IF JQUERY FILE IS LOADED AFTER THE STYLESHEET-->
+    <script src="dist/lib/jquery.min.js"></script>
+    <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>-->
+    <!--WORKS WITH LOCAL FILE NOW-->
+    <script src="dist/lib/bootstrap.min.js"></script>
+    <!--<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
+    <!-- the following one is used for modal forms -->
+    <!--<script src="js/site.js"></script>-->
+</body>
+</html>
+
+

@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "FullLoudWhisperer(1)", ".", "{E69E03E7-2418-4CA1-938F-5ABE5C782468}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_10772"
+		Debug.AspNetCompiler.PhysicalPath = "..\FullLoudWhisperer\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_10772\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_10772"
+		Release.AspNetCompiler.PhysicalPath = "..\FullLoudWhisperer\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_10772\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "10772"
+		SlnRelativePath = "..\FullLoudWhisperer\"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "..\WebApi\WebApi.csproj", "{5FDE12AD-CAC2-49D8-95A4-3F174D4D9CCB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E69E03E7-2418-4CA1-938F-5ABE5C782468}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E69E03E7-2418-4CA1-938F-5ABE5C782468}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E69E03E7-2418-4CA1-938F-5ABE5C782468}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{E69E03E7-2418-4CA1-938F-5ABE5C782468}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{5FDE12AD-CAC2-49D8-95A4-3F174D4D9CCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FDE12AD-CAC2-49D8-95A4-3F174D4D9CCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FDE12AD-CAC2-49D8-95A4-3F174D4D9CCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FDE12AD-CAC2-49D8-95A4-3F174D4D9CCB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
