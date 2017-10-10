@@ -1,0 +1,84 @@
+﻿
+<div *ngIf="componentMember" class="col-md-12">
+
+    <div class="panel panel-info>">
+        <div class="panel-footer">
+            <strong class="textgray">Personal Details:</strong>
+        </div>
+
+        <div class="panel-body">
+            <div class="col-md-3">
+                <div>
+                    <strong class="textgray">Team:</strong> <span class="text-info">{{ componentMember.TeamName }}</span>
+                </div>
+                <div>
+                    <strong class="textgray">Name:</strong> <span  class="text-info">{{ componentMember.Name }}</span>
+                </div>
+                <div>
+                    <strong class="textgray">Username:</strong> <span  class="text-info">{{ componentMember.AtoUsername }}</span>
+                </div>
+                <div>
+                    <strong class="textgray">Phone:</strong> <span  class="text-info">{{ componentMember.PhoneNumber }}</span>
+                </div>
+             
+            </div>
+            
+            <div class="col-md-2">
+                <div><strong class="textgray">Location</strong></div>
+                <div>
+                    <strong class="textgray">Number:</strong> <span  class="text-info">{{ componentMember.LocalityNumber }}</span>
+                </div>
+                <div>
+                    <strong class="textgray">Street:</strong> <span  class="text-info">{{ componentMember.LocalityStreet }}</span>
+                </div>
+                <div>
+                    <strong class="textgray">Suburb:</strong><span  class="text-info"> {{ componentMember.LocalitySuburb }}</span>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div>
+                    <strong class="textgray">City:</strong> <span  class="text-info">{{ componentMember.LocalityCity }}</span>
+                </div>
+                <div>
+                    <strong class="textgray">Postcode:</strong><span  class="text-info"> {{ componentMember.LocalityPostcode }}</span>
+                </div>
+                <div>
+                    <strong class="textgray">State:</strong><span  class="text-info"> {{ componentMember.LocalityState }}</span>
+                </div>
+                <div>
+                    <strong class="textgray">Workpoint:</strong><span  class="text-info"> {{ componentMember.Workpoint }}</span>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div>
+                    <strong class="textgray">Level:</strong><span  class="text-info"> {{ componentMember.LevelTitle }}</span>
+                </div>
+                <div>
+                    <strong class="textgray">Position:</strong><span  class="text-info"> {{ componentMember.PositionTitle }}</span>
+                </div>                
+                <div>
+                    <strong class="textgray">Email:</strong><span  class="text-info"> {{ componentMember.Email}}</span>
+                </div>
+            </div>         
+
+        </div>
+
+        <div class="panel-footer">
+            <strong class="textgray">Manager:</strong> <span class="text-info">{{ componentMember.Manager }}</span>
+        </div>
+    </div>
+
+    <my-spinner [isRunning]="isRequesting"></my-spinner>
+
+</div>
+
+<!-- example of an address section -->
+<!--<address>
+           <strong>Twitter, Inc.</strong><br>
+           1355 Market Street, Suite 900<br>
+           San Francisco, CA 94103<br>
+           <abbr title="Phone">P:</abbr> (123) 456-7890
+         </address>-->
+

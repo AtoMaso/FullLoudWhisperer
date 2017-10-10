@@ -1,0 +1,73 @@
+﻿<div class="panel panel-heading">
+  <h3><i>File Upload View</i></h3>
+</div>
+<div class="container col-md-12">
+
+  <div class="panel panel-header">Single File Upload</div>
+  <div class="panel panel-body">
+    <div class="row">
+      <div class="col-md-2">
+        <input type="file" [ng-file-select]="options" (onUpload)="handleBasicUpload($event)">
+      </div>
+      <div class="progress col-md-7 col-md-offset-2">
+        <div class="progress-bar" [style.width]="basicProgress + '%'"></div>
+        <span class="percent">{{ basicProgress }}%</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">Response</div>
+      <div class="col-md-10">
+        <p>
+          {{ basicResp | json }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="panel panel-header">Multiple File Upload</div>
+  <div class="panel panel-body">
+    <div class="row">
+      <div class="col-md-2">
+        <input type="file" multiple [ng-file-select]="options" (onUpload)="handleMultipleUpload($event)">
+      </div>
+      <div class="progress col-md-7 col-md-offset-2">
+        <div class="progress-bar" [style.width]="multipleProgress + '%'"></div>
+        <span class="percent">{{ multipleProgress }}%</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">Response</div>
+      <div class="col-md-10">
+        <p *ngIf="multipleResp.length">
+          {{ multipleResp | json }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="panel panel-header">Drag & Drop File Upload</div>
+  <div class="panel panel-body">
+    <div class="row">
+      <div class="col-md-2">
+        <div class="tag btn is-info" [ng-file-drop]="options" (onUpload)="handleDropUpload($event)">
+          <i class="fa fa-hand-grab-o icon is-small"></i> Drop files here
+        </div>
+      </div>
+      <div class="progress col-md-7 col-md-offset-2">
+        <div class="progress-bar" [style.width]="dropProgress + '%'"></div>
+        <span class="percent">{{ dropProgress }}%</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">Response</div>
+      <div class="col-md-10">
+        <p *ngIf="dropResp.length">
+          {{ dropResp | json }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>

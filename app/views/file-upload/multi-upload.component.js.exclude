@@ -1,0 +1,130 @@
+System.register(['angular2/core', 'angular2/common', "../../plugins/multipart-upload/multipart-item", "../../plugins/multipart-upload/multipart-uploader"], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
+    var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+    var __metadata = (this && this.__metadata) || function (k, v) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+    };
+    var core_1, common_1, multipart_item_1, multipart_uploader_1;
+    var URL, MultiUploadComponent;
+    return {
+        setters:[
+            function (core_1_1) {
+                core_1 = core_1_1;
+            },
+            function (common_1_1) {
+                common_1 = common_1_1;
+            },
+            function (multipart_item_1_1) {
+                multipart_item_1 = multipart_item_1_1;
+            },
+            function (multipart_uploader_1_1) {
+                multipart_uploader_1 = multipart_uploader_1_1;
+            }],
+        execute: function() {
+            URL = 'http://localhost:5500/api/uploads';
+            MultiUploadComponent = (function () {
+                function MultiUploadComponent() {
+                    var _this = this;
+                    // multi part code
+                    this.uploaderMulti = new multipart_uploader_1.MultipartUploader({ url: URL });
+                    this.multipartItem = new multipart_item_1.MultipartItem(this.uploaderMulti);
+                    this.basicProgress = 0;
+                    this.zone = new core_1.NgZone({ enableLongStackTrace: false });
+                    this.upload = function () {
+                        //console.debug("upload.component.ts & upload() ==>");
+                        if (null == _this.file) {
+                            console.error("upload.component.ts & upload() form invalid.");
+                            return;
+                        }
+                        if (_this.multipartItem == null) {
+                            _this.multipartItem = new multipart_item_1.MultipartItem(_this.uploaderMulti);
+                        }
+                        if (_this.multipartItem.formData == null)
+                            _this.multipartItem.formData = new FormData();
+                        // TODO ADDED FALSE CREDENTIALS
+                        _this.multipartItem.withCredentials = false;
+                        _this.multipartItem.formData.append("email", _this.email);
+                        _this.multipartItem.formData.append("password", _this.password);
+                        _this.multipartItem.formData.append("file", _this.file);
+                        _this.multipartItem.callback = _this.uploadCallback;
+                        _this.multipartItem.upload();
+                    };
+                    this.uploadCallback = function (data) {
+                        var message = "";
+                        //console.debug("upload.component.ts & uploadCallback() ==>");
+                        _this.file = null;
+                        if (data) {
+                            message = "File upload success.";
+                        }
+                        else {
+                            message = "File upload failed.";
+                        }
+                        _this.basicResp = message;
+                    };
+                }
+                MultiUploadComponent.prototype.selectFile = function ($event) {
+                    var inputValue = $event.target;
+                    if (null == inputValue || null == inputValue.files[0]) {
+                        //console.debug("Input file error.");
+                        return;
+                    }
+                    else {
+                        this.file = inputValue.files[0];
+                    }
+                };
+                MultiUploadComponent = __decorate([
+                    core_1.Component({
+                        selector: 'simple-uploader',
+                        templateUrl: './app/views/file-upload/multi-upload.component.html',
+                        styles: ['multi-upload.component.css'],
+                        directives: [common_1.NgClass, common_1.NgStyle, common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES]
+                    }), 
+                    __metadata('design:paramtypes', [])
+                ], MultiUploadComponent);
+                return MultiUploadComponent;
+            }());
+            exports_1("MultiUploadComponent", MultiUploadComponent);
+        }
+    }
+});
+// LIVE CYCLE OF A COMPONENT
+//ngOnInit() {
+//    // Properties are resolved and things like
+//    // this.mapWindow and this.mapControls
+//    // had a chance to resolve from the
+//    // two child components <map-window> and <map-controls>
+//}
+//ngOnDestroy() {
+//    // Speak now or forever hold your peace
+//}
+//ngDoCheck() {
+//    // Custom change detection
+//}
+//ngOnChanges(changes) {
+//    // Called right after our bindings have been checked but only
+//    // if one of our bindings has changed.
+//    //
+//    // changes is an object of the format:
+//    // {
+//    //   'prop': PropertyUpdate
+//    // }
+//}
+//ngAfterContentInit() {
+//    // Component content has been initialized
+//}
+//ngAfterContentChecked() {
+//    // Component content has been Checked
+//}
+//ngAfterViewInit() {
+//    // Component views are initialized
+//}
+//ngAfterViewChecked() {
+//    // Component views have been checked
+//}
+//# sourceMappingURL=multi-upload.component.js.map

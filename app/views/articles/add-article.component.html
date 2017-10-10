@@ -1,0 +1,259 @@
+﻿<!-- File upload -->
+<style>
+  .my-drop-zone {
+    border: solid 3px lightgray;
+  }
+
+  .nv-file-over {
+    border: solid 3px red;
+  }
+  /* Default class applied to drop zones on over */
+  .another-file-over-class {
+    border: solid 3px green;
+  }
+</style>
+
+
+  <form *ngIf="!isSubmitted" [ngFormModel]="articleForm" (submit)="saveArticle()">
+
+        <!-- form fields -->
+        <div class="container">
+          <!-- title section -->
+          <div class="col-md-5 col-md-offset-1">
+            <div class="row">            
+                <div class="form-group smalltext textgray">
+                  <label for="Title">Title</label>
+                  <input type="text" ngControl="Title" id="Title" [(ngModel)]="newArticle.Title" 
+                             class="form-control inputtext" maxlength="50" required/>
+                  <control-messages control="Title" class="text-danger"></control-messages>
+                </div>        
+            </div>
+           
+            <!-- category section -->
+            <div class="row">  
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="form-group smalltext textgray">
+                    <label for="Category">Category</label>
+                    <select ngControl="Category" id="Category" [(ngModel)]="newArticle.CategoryId" 
+                                class="form-control inputtext" required>
+                      <option *ngFor="let category of categories" [value]="category.CategoryId">{{ category.CategoryName }}</option>
+                    </select>
+                    <control-messages control="Category" class="text-danger"></control-messages>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- flush section -->
+            <div class="row">            
+              <div class="form-group smalltext textgray">
+                <label for="Flash">Flash Info</label>
+                <input type="text" ngControl="Flash" id="Flush" [(ngModel)]="newArticle.Flash" 
+                          class="form-control inputtext" maxlength="100" required/>
+                <control-messages control="Flash" class="text-danger"></control-messages>
+              </div>
+              </div>
+          </div>
+
+          <br />
+
+          <!-- help section -->
+          <div class="col-md-5" style="margin-left:5px;">
+            <div class="row">
+              <div class="panel panel-heading textgray">
+                <p><strong>Help</strong></p>                                                                       
+                <ul>
+                  <li>The Title can be maximum of 50 characters.</li>
+                  <li>The Flash info can be 100 characters long.</li>
+                  <li>The content of the article can be max of 3000 characters.</li>
+                  <li>You are allowed 2 attachments per article.</li>
+                  <li>Possible uploadable file extenssions are: .csv, .xls, .xlsx, .xml, .txt, .doc, docx, .cs,.vb, .sql </li>
+                  <li>The application will add unique guid to the attached file name.<br /></li>              
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      
+       <!-- content section -->
+        <div class="container">
+          <div class="col-md-10 col-md-offset-1">
+            <div class="row">
+              <div class="form-group smalltext textgray">
+                <label for="Content">Content</label>
+                <textarea ngControl="Content" id="Content" [(ngModel)]="newArticle.Content" style="height:200px" 
+                           class="form-control inputtext" maxlength="3000" required></textarea>
+                <control-messages control="Content" class="text-danger"></control-messages>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- file upload section -->
+        <div class="container">           
+
+          <div class="col-md-3 col-md-offset-1">
+
+            <div class="row">              
+                <label class="smalltext textgray">Attachements:</label>                 
+            </div>                      
+            <!--<div class="row">
+              <label class="smalltext textgray">Select File/s</label>
+            </div>-->
+            <br/>
+            <!--<div class="row">
+              <input type="file" ng2FileSelect [uploader]="uploader" (change)="onChange($event)"/>            
+            </div>-->
+            <!--<br/>-->
+            <div class="row">          
+              <input type="file" ng2FileSelect [uploader]="uploader" (change)="onChange($event)" multiple />
+            </div>
+          </div>
+
+          <div class="col-md-7">
+             <div class="row" *ngIf="isMessageVisible" >
+               <div class="panel text-warning smalltext">
+                      {{ fileErrorMessage }}
+               </div>
+            </div>
+            <br/>          
+            <div class="row">
+              <label class="smalltext textgray">Upload queue</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <label class="smalltext textgray">Queue length: {{ uploader?.queue?.length }}</label>
+            </div>
+
+
+            <div class="row">
+              <table class="table">
+
+                <thead class="smalltext textgray">
+                  <tr>
+                    <th width="50%">Name</th>
+                    <th>Size</th>
+                    <!--<th>Progress</th>-->
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr *ngFor="let item of uploader.queue">
+                    <td><label class="smalltext text-info">{{ item?.file?.name }}</label></td>
+                    <!--<td *ngIf="uploader.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>-->
+                    <td nowrap class="smalltext text-info">{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+
+                    <!--<td *ngIf="uploader.isHTML5">
+                  <div class="progress" style="margin-bottom: 0;">
+                        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                  </div>
+                  </td>-->
+
+                    <td class="text-center">
+                      <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                      <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                      <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                    </td>
+
+
+                    <td nowrap class="text-center">
+                      <!-- upload button single file-->
+                      <!--<button type="button" class="btn btn-success btn-xs"
+                              (click)="uploadSingleFile(item)" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                        <span class="glyphicon glyphicon-upload"></span> Upload
+                      </button>-->
+                      <!-- cancel button single file -->
+                      <button type="button" class="btn btn-warning btn-xs"
+                              (click)="item.cancel()" [disabled]="!item.isUploading">
+                        <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                      </button>
+                      <!-- remove button single file -->
+                      <button type="button" class="btn btn-danger btn-xs"
+                              (click)="removeFile(item)">
+                        <span class="glyphicon glyphicon-trash"></span> Remove
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+
+              </table>
+            </div>
+
+            <!-- Upload multiple -->
+            <div class="row">
+              <div>
+                <label class="smalltext textgray">Queue progress:</label>
+                <div class="progress" style="">
+                  <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                </div>
+              </div>             
+              <!--<button type="button" class="btn btn-success btn-s"
+                      (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                <span class="glyphicon glyphicon-upload"></span> Upload all
+              </button>-->       
+              <button type="button" class="btn btn-warning btn-s"
+                      (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+                <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+              </button>           
+              <button type="button" class="btn btn-danger btn-s"
+                      (click)="removeAllFiles()" [disabled]="!uploader.queue.length">
+                <span class="glyphicon glyphicon-trash"></span> Remove all
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+        <br/>
+       <!-- submit button -->
+       <div class="container">          
+         <div class="col-md-10 col-md-offset-1" style="text-align:left">
+           <div class="row">             
+             <button type="submit" class="btn btn-block btn-success smalltext" [disabled]="!articleForm.valid">
+               Submit
+             </button>
+           </div>
+         </div>
+       </div>
+  </form>
+
+
+
+<!-- submitted form -->
+<div *ngIf="isSubmitted" class="container col-md-12">
+  <div class="panel panel-info>">
+
+    <div class="panel-footer textgray">
+      <strong>Title: </strong><span class="text-info">{{ returnedArticle.Title }}</span>        
+    </div>
+
+    <div class="panel-body">
+          <div class="row">
+                  <span class="textgray" style="margin-left:15px;"><strong>Author:</strong></span> 
+                  <span class="text-info">{{ returnedArticle.AuthorName }}</span>
+          </div>
+          <div class="row">
+                  <span class="textgray" style="margin-left:15px;"><strong>Flush Info:</strong></span>
+                  <span class="text-info">{{ returnedArticle.Flash }}</span></div>
+          <div class="row">
+                  <span class="textgray"style="margin-left:15px;"><strong>Category:</strong></span>
+                  <span class="text-info">{{ returnedArticle.CategoryName }}</span> 
+          </div>     
+    </div>
+
+    <div class="panel-body textgray" *ngIf="isVisible">
+          <div *ngFor="let attach of returnedAttachements">
+            <strong class="textgray">Attachement: </strong><a href="{{ attach.PhysicalPath }}" target="_blank" class="text-info" style="text-decoration:underline">{{ attach.Name }}</a>
+          </div>
+    </div>
+
+    <div class="panel-footer">
+          <strong class="textgray">Date Published: </strong><span class="text-info">{{ returnedArticle.DatePublished }}</span>  &nbsp;&nbsp;&nbsp;
+          <span> <a href="" [routerLink]="['Articles']" class="btn btn-sm btn-success">Back To Articles</a> </span>
+    </div>
+  </div>
+</div>
+
+<my-spinner [isRunning]="isRequesting"></my-spinner>

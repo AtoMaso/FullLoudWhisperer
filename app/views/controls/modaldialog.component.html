@@ -1,0 +1,20 @@
+﻿<div *ngIf="modalIsVisible" class="modal fade show in danger" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Warning</h4>
+            </div>
+            <div class="modal-body">
+                <p>{{ modalMessage }}</p>
+            </div>
+            <div class="modal-footer">
+                Move or click you mouse to extend your session.
+                <!--<button type="button" class="btn btn-default" (click)="closeSession()">Close</button>
+                <button type="button" class="btn btn-default" (click)="continueSession()">Continue</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+

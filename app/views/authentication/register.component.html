@@ -1,0 +1,111 @@
+﻿
+
+    <div class="container col-md-12">
+
+        <form *ngIf="!submitted" (submit)="register()" [ngFormModel]="signInForm">
+
+          <div class="row">
+            <div class="col-md-4 col-md-offset-1">
+              <div class="row">
+                <div class="form-group smalltext textgray">
+                  <label for="Name">Name</label>
+                  <input type="text" ngControl="Name" id="Name" [(ngModel)]="_account.Name" required 
+                         class="form-control inputtext" maxlength="50">
+                  <control-messages control="Name" class="text-danger"></control-messages>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group smalltext textgray">
+                  <label for="AtoUsername">Ato User Name</label>
+                  <input type="text" ngControl="AtoUsername" id="AtoUsername" [(ngModel)]="_account.AtoUsername" required 
+                         class="form-control inputtext" maxlength="5">
+                  <control-messages control="AtoUsername" class="text-danger"></control-messages>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group smalltext textgray">
+                  <label for="Email">Email</label>
+                  <input type="text" ngControl="Email" id="Email" [(ngModel)]="_account.Email" required 
+                         class="form-control inputtext" maxlength="70">
+                  <control-messages control="Email" class="text-danger"></control-messages>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group smalltext textgray">
+                  <label for="Password">Password</label>
+                  <input type="password" ngControl="Password" id="Pasword" [(ngModel)]="_account.Password" required 
+                         class="form-control inputtext" maxlength="10">
+                  <control-messages control="Password" class="text-danger"></control-messages>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group smalltext textgray">
+                  <label for="ConfirmPassword">Confirm Password</label>
+                  <input type="password" ngControl="ConfirmPassword" id="ConfirmPasword" [(ngModel)]="_account.ConfirmPassword" required 
+                         class="form-control inputtext" maxlength="10">
+                  <control-messages control="ConfirmPassword" class="text-danger"></control-messages>
+                </div>
+              </div>
+              <br />
+
+            </div>
+
+            <div class="col-md-6">
+              <br />
+              <div class="panel panel-heading panel-info textgray">
+                <p><strong>Help</strong></p>
+                Please provide all required information needed (marked in red) to register to the application.
+                <ul>
+                  <br/>
+                  <li>The name should contain your first and second name only and with maximum of 50 characters in length. </li>
+                  <li>Your username should be your ATONET account username. </li>
+                  <li>Your email will be your ATO emaill account.The application will not accept domain other then "ato.gov.au".</li>
+                  <li>The application will allow email of 70 characters in length".</li>
+                  <li>Your password SHOULD NOT be your ATONET account password.</li>
+                  <li>The password should be between 6 and 10 character in length and should contain at least one numeric character and one upper case character.</li>
+                  <br/>
+                </ul>
+              </div>
+     
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1" style="text-align:left">
+              <div class="row">  
+                    <button class="btn btn-block btn-success smalltext" type="submit" [disabled]="!signInForm.valid">Register</button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+
+        <div *ngIf="submitted">
+
+          <div class="row">
+            <div class="col-md-5 col-md-offset-1">
+              <div class="panel panel-heading textgray">
+                An account with the application author's permissions containing your credentials has been created.
+                As an author you will able to add articles and remove your articles from the application.
+                To add an articles select "Add New" button on the All Articles view.
+                Please use the "Login" button to log into the application with your newly created credentials.
+              </div>
+            </div>
+          </div>
+
+           <br />
+
+          <div class="row">
+            <div class="col-md-5 col-md-offset-1">
+              <div class="smalltext" style="text-align:center">
+                <button [routerLink]="['Login']" class="btn btn-block btn-success">Login</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+    </div>
+
+
+
+

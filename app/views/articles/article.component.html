@@ -1,0 +1,31 @@
+﻿
+<div *ngIf="componentArticle" class="container col-md-12">
+    <div class="panel panel-info>">
+
+        <div class="panel-footer textgray">
+          <div class="row">
+            <div class="col-md-6"><strong>Author:</strong> <span class="text-info">{{ componentArticle.AuthorName }}</span></div>
+            <div class="col-md-6"><strong>Category:</strong> <span class="text-info">{{ componentArticle.CategoryName }}</span></div>
+          </div>
+        </div>
+
+        <div class="panel-body textgray">
+            {{ componentArticle.Content }}
+        </div>
+
+      <div class="panel-footer textgray" *ngIf="isVisible">
+       
+          <div *ngFor="let attach of attachements">
+            <strong>Attachement: </strong><a href="{{ attach.PhysicalPath }}" target="_blank" class="text-info" style="text-decoration:underline">{{ attach.Name }}</a> 
+          </div>        
+      </div>
+
+        <div class="panel-footer textgray">
+          <strong>Date Published: </strong><span class="text-info">{{ componentArticle.DatePublished  }}</span>
+        </div>
+
+    </div>
+
+    <my-spinner [isRunning]="isRequesting"></my-spinner>
+</div>
+

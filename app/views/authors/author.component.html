@@ -1,0 +1,82 @@
+﻿
+
+    <div *ngIf="componentAuthor" class="col-md-12">
+
+      <div class="panel panel-info>">
+        <div class="panel-footer">
+          <strong class="textgray">Personal Details:</strong>
+        </div>
+
+        <div class="panel-body">
+          <div class="col-md-3">
+            <div>
+              <strong class="textgray">Name:</strong><span class="text-info">&nbsp;{{ componentAuthor.Name }}</span>
+            </div>            
+            <div>
+              <strong class="textgray">Username:</strong><span class="text-info">&nbsp;{{ componentAuthor.AtoUsername }}</span>
+            </div>
+            <div>
+              <strong class="textgray">Phone:</strong><span class="text-info">&nbsp;{{ componentAuthor.PhoneNumber }}</span>
+            </div>
+          </div>
+
+          <div class="col-md-3 ">
+            <div><strong class="textgray">Location</strong></div>
+            <div>
+              <strong class="textgray">Number:</strong><span class="text-info">&nbsp;{{ componentAuthor.LocalityNumber }}</span>
+            </div>
+            <div>
+              <strong class="textgray">Street:</strong><span class="text-info">&nbsp;{{ componentAuthor.LocalityStreet }}</span>
+            </div>
+            <div>
+              <strong class="textgray">Suburb:</strong><span class="text-info">&nbsp;{{ componentAuthor.LocalitySuburb }}</span>
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <div>
+              <strong class="textgray">City:</strong><span class="text-info">&nbsp;{{ componentAuthor.LocalityCity }}</span>
+            </div>
+            <di>
+              <strong class="textgray">Postcode:</strong><span class="text-info">&nbsp;{{ componentAuthor.LocalityPostcode }}</span>
+            </di>
+            <div>
+              <strong class="textgray">State:</strong><span class="text-info"> &nbsp;{{ componentAuthor.LocalityState }}</span>
+            </div>
+            <div>
+              <strong class="textgray">Workpoint:</strong><span class="text-info">&nbsp; {{ componentAuthor.Workpoint }}</span>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div>
+              <strong class="textgray">Team:</strong>
+              <a href="" [routerLink]="['Team', {id: componentAuthor.TeamId}]" class="text-info" style="text-decoration:underline">
+                <strong>{{ componentAuthor.TeamName }}</strong>
+              </a>
+            </div>
+            <div>
+              <strong class="textgray">Email:</strong><span class="text-info">&nbsp;{{ componentAuthor.Email}}</span>
+            </div>
+            <div>
+              <a href="" [routerLink]="['Articles', {id: componentAuthor.Id}]" class="text-info" style="text-decoration:underline">
+                <strong>Author's Articles...</strong>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-footer">
+          <div>          
+          <strong class="textgray">Manager:</strong> <span class="text-info">{{ componentAuthor.Manager }}</span>
+          </div>
+          <!--<div class="text-center">
+            <button  [routerLink]="['UpdateAuthor', {id: componentAuthor.Id}]" class="text-success btn btn-sm" style="text-decoration:underline">
+              <strong>Update</strong>
+            </button>
+          </div>-->        
+        </div>
+      </div>
+
+      <my-spinner [isRunning]="isRequesting"></my-spinner>
+    </div>

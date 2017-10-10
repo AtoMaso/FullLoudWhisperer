@@ -1,0 +1,160 @@
+﻿
+
+<div class="container col-md-12">
+
+  <form *ngIf="!isSubmitted" [ngFormModel]="authorForm" (submit)="saveAuthor()">
+    <div class="row">
+
+      <div class="col-md-3 col-md-offset-1">
+        <div class="form-group smalltext textgray">
+          <label for="Name">Name</label>
+          <input type="text" ngControl="Name" id="Name" [(ngModel)]="newAuthor.Name" required 
+                     class="form-control inputtext" maxlength="50" />
+          <control-messages control="Name" class="text-danger"></control-messages>
+        </div>
+
+        <!--<div class="form-group smalltext textgray">
+          <label for="Username">Username</label>
+          <input type="text" ngControl="Username" id="Username" [(ngModel)]="newAuthor.AtoUsername" required 
+                    class="form-control inputtext" maxlength="5"/>
+          <control-messages control="Username" class="text-danger"></control-messages>
+        </div>-->
+
+        <!--<div class="form-group smalltext textgray">
+          <label for="Email">Email</label>
+          <input type="email" ngControl="Email" id="Email" [(ngModel)]="newAuthor.Email" required
+                    class="form-control inputtext" maxlength="70" />
+          <control-messages control="Email" class="text-danger"></control-messages>
+        </div>-->
+
+        <div class="form-group smalltext textgray">
+          <label for="Phone">Phone</label>
+          <input type="text" ngControl="Phone" id="Phone" [(ngModel)]="newAuthor.PhoneNUmber" required
+                     class="form-control inputtext" maxlength="10"/>
+          <control-messages control="Phone" class="text-danger"></control-messages>
+        </div>
+
+        <div class="form-group smalltext textgray">
+          <label for="Workpoint">Workpoint</label>
+          <input type="text" ngControl="Workpoint" id="Workpoint" [(ngModel)]="newAuthor.Workpoint" required
+                    class="form-control inputtext" maxlength="6"/>
+          <control-messages control="Workpoint" class="text-danger"></control-messages>
+        </div>
+      </div>
+
+      <!-- Drop Downs -->
+      <div class="col-md-3">
+        <div class="form-group smalltext textgray">
+          <label for="Manager">Manager</label>
+          <select ngControl="Manager" id="Manager" [(ngModel)]="newAuthor.Manager" required class="form-control inputtext">
+            <option *ngFor="let manager of _members" [value]="manager.Name">{{ manager.Name }}</option>
+          </select>
+          <control-messages control="Manager" class="text-danger"></control-messages>
+        </div>
+
+        <div class="form-group smalltext textgray">
+          <label for="Level">APS Level</label>
+          <select ngControl="Level" id="Level" [(ngModel)]="newAuthor.LevelId" required class="form-control inputtext">
+            <option *ngFor="let level of _levels" [value]="level.LevelId">{{ level.LevelTitle }}</option>
+          </select>
+          <control-messages control="Level" class="text-danger"></control-messages>
+        </div>
+
+        <div class="form-group smalltext textgray">
+          <label for="Position">Position</label>
+          <select ngControl="Position" id="Position" [(ngModel)]="newAuthor.PositionId" required class="form-control inputtext">
+            <option *ngFor="let position of _positions" [value]="position.PositionId">{{ position.PositionTitle }}</option>
+          </select>
+          <control-messages control="Position" class="text-danger"></control-messages>
+        </div>
+
+        <div class="form-group smalltext textgray">
+          <label for="Team">Team</label>
+          <select ngControl="Team" id="Team" [(ngModel)]="newAuthor.TeamId" required class="form-control inputtext">
+            <option *ngFor="let team of _teams" [value]="team.TeamId">{{ team.TeamName }}</option>
+          </select>
+          <control-messages control="Team" class="text-danger"></control-messages>
+        </div>
+
+        <div class="form-group smalltext textgray">
+          <label for="Location">Location</label>
+          <select ngControl="Location" id="Location" [(ngModel)]="newAuthor.LocalityId" required class="form-control inputtext">
+            <option *ngFor="let location of _locations" [value]="location.LocalityId">
+              {{location.Number}} {{location.Street}} {{ location.City}} {{ location.Postcode }}
+            </option>
+          </select>
+          <control-messages control="Location" class="text-danger"></control-messages>
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <br />
+        <div class="panel panel-heading textgray">
+          <p><strong>Help</strong></p>
+          Please provide all author's information:
+          <ul>
+            <li>The name should will be your first and second name and with max of 50 characters in length. </li>
+            <li>Your username should be your ATONET account username.</li>
+            <li>Your email will be your ATO emaill account.The application will not accept domain other then "ato.gov.au".</li>
+            <li>The application will allow email of 70 characters in length".</li>
+            <li>The phone will be 10 characters in length".</li>
+            <li>The workpoint will be 3-6 characters in length".</li>
+          </ul>
+        </div>              
+      </div>
+
+    </div>
+
+    <br />
+
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1" style="text-align:center">
+        <button type="submit" class="btn btn-block btn-success smalltext" [disabled]="!authorForm.valid">Submit</button>
+      </div>
+    </div>
+
+  </form>
+
+  <!-- submitted form -->
+  <div *ngIf="isSubmitted" class="panel panel-heading">
+    <div class="row">
+      <div class="col-md-3 col-md-offset-1">
+        <div><strong class="textgray">Name:</strong> <span class="text-info">{{ returnedAuthor.Name }}</span></div>
+        <div><strong class="textgray">Username:</strong><span class="text-info text-uppercase"> {{ returnedAuthor.AtoUsername }}</span></div>
+        <div><strong class="textgray">Email:</strong> <span class="text-info">{{ returnedAuthor.Email }}</span></div>
+        <div><strong class="textgray">Phone: </strong><span class="text-info">{{ returnedAuthor. PhoneNumber }}</span></div>
+        <div><strong class="textgray">Workpoint:</strong> <span class="text-info">{{ returnedAuthor.Workpoint }}</span></div>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+        <div><strong class="textgray">Author Manager:</strong> <span class="text-info">{{ returnedAuthor.Manager }}</span></div>
+        <div><strong class="textgray">Level Title:</strong> <span class="text-info">{{ returnedAuthor.LevelTitle }}</span></div>
+        <div><strong class="textgray">Position Title:</strong> <span class="text-info">{{ returnedAuthor.PositionTitle }}</span></div>
+        <div><strong class="textgray">Team Name:</strong> <span class="text-info">{{ returnedAuthor.TeamName }}</span></div>
+        <div>
+          <strong class="textgray">Author Location:</strong>
+          <span class="text-info">
+            {{ returnedAuthor.LocalityNumber }}
+            {{ returnedAuthor.LocalityStreet }}
+            {{ returnedAuthor.LocalitySuburb }}
+            {{ returnedAuthor.LocalityCity }}
+            {{ returnedAuthor.LocalityPostcode }}
+            {{ returnedAuthor.LocalityState }}
+          </span>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-md-3 col-md-offset-1">
+        <a href=""  [routerLink]="['Authors']" class="btn btn-sm btn-success">Back To Authors</a>
+      </div>
+    </div>
+  </div>
+
+  <my-spinner [isRunning]="isRequesting"></my-spinner>
+
+</div>
+
+
+

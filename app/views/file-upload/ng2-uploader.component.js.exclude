@@ -1,0 +1,96 @@
+System.register(['angular2/core', 'ng2-uploader/ng2-uploader'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
+    var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+    var __metadata = (this && this.__metadata) || function (k, v) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+    };
+    var core_1, ng2_uploader_1;
+    var Demo;
+    return {
+        setters:[
+            function (core_1_1) {
+                core_1 = core_1_1;
+            },
+            function (ng2_uploader_1_1) {
+                ng2_uploader_1 = ng2_uploader_1_1;
+            }],
+        execute: function() {
+            Demo = (function () {
+                function Demo() {
+                    this.options = {
+                        url: 'http://localhost:5500/api/upload'
+                    };
+                    this.basicProgress = 0;
+                    this.multipleProgress = 0;
+                    this.multipleResp = [];
+                    this.dropProgress = 0;
+                    this.dropResp = [];
+                    this.zone = new core_1.NgZone({ enableLongStackTrace: false });
+                }
+                Demo.prototype.handleBasicUpload = function (data) {
+                    var _this = this;
+                    this.basicResp = data;
+                    this.zone.run(function () {
+                        _this.basicProgress = data.progress.percent;
+                    });
+                };
+                Demo.prototype.handleMultipleUpload = function (data) {
+                    var _this = this;
+                    var index = this.multipleResp.findIndex(function (x) { return x.id === data.id; });
+                    if (index === -1) {
+                        this.multipleResp.push(data);
+                    }
+                    else {
+                        this.zone.run(function () {
+                            _this.multipleResp[index] = data;
+                        });
+                    }
+                    var total = 0, uploaded = 0;
+                    this.multipleResp.forEach(function (resp) {
+                        total += resp.progress.total;
+                        uploaded += resp.progress.loaded;
+                    });
+                    this.multipleProgress = Math.floor(uploaded / (total / 100));
+                };
+                Demo.prototype.handleDropUpload = function (data) {
+                    var _this = this;
+                    var index = this.dropResp.findIndex(function (x) { return x.id === data.id; });
+                    if (index === -1) {
+                        this.dropResp.push(data);
+                    }
+                    else {
+                        this.zone.run(function () {
+                            _this.dropResp[index] = data;
+                        });
+                    }
+                    var total = 0, uploaded = 0;
+                    this.dropResp.forEach(function (resp) {
+                        total += resp.progress.total;
+                        uploaded += resp.progress.loaded;
+                    });
+                    this.dropProgress = Math.floor(uploaded / (total / 100));
+                };
+                Demo = __decorate([
+                    core_1.Component({
+                        selector: 'demo',
+                        templateUrl: 'app/components/demo/demo.html',
+                        styleUrls: ['app/components/demo/demo.css'],
+                        providers: [],
+                        directives: [ng2_uploader_1.UPLOAD_DIRECTIVES],
+                        pipes: []
+                    }), 
+                    __metadata('design:paramtypes', [])
+                ], Demo);
+                return Demo;
+            }());
+            exports_1("Demo", Demo);
+        }
+    }
+});
+//# sourceMappingURL=ng2-uploader.component.js.map

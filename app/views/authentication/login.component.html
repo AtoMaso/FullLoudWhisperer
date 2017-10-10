@@ -1,0 +1,59 @@
+﻿
+    <div class="container col-md-12">
+
+        <form (submit)="login()" [ngFormModel]="loginForm">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-1">
+                    <!--<div class="row">
+                        <div class="form-group smalltext">
+                            <label for="UserName">Username</label>
+                            <input type="text" ngControl="UserName" id="UserName" [(ngModel)]="_account.UserName"
+                                   placeholder="Username" class="form-control inputtext">
+                            <control-messages control="UserName" class="text-danger"></control-messages>
+                        </div>
+                    </div>-->
+
+                    <div class="row">
+                        <div class="form-group smalltext textgray">
+                            <label for="Email">Email</label>
+                            <input type="text" ngControl="Email" id="Email" [(ngModel)]="_account.Email" required 
+                                   class="form-control inputtext" maxlength="70">
+                            <control-messages control="Email" class="text-danger"></control-messages>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group smalltext textgray">
+                            <label for="Password">Password</label>
+                            <input type="password" ngControl="Password" id="Pasword" [(ngModel)]="_account.Password" required 
+                                   class="form-control inputtext" maxlength="10">
+                            <control-messages control="Password" class="text-danger"></control-messages>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <button class="btn btn-md btn-success btn-block" type="submit" [disabled]="!loginForm.valid">Login</button>
+                    </div>
+                    <br />
+
+                </div>
+
+                <div class="col-md-6 col-md-offset-1">
+                    <br />
+                    <div class="row panel panel-heading panel-info textgray">
+                        <p><strong>Help</strong></p>                    
+                        Please provide your credentials to login into the application. Use the coresponding links bellow
+                        to get your forgotten application password or to register yourself as a publishing author.                    
+                    </div>
+
+                    <br />
+                    <div class="row">
+                        <a href="" class="extrasmalltextbold text-success" style="text-decoration:underline">Forgot your password.</a> &nbsp;&nbsp;&nbsp;&nbsp;                     
+                        <a href="" class="extrasmalltextbold text-success" style="text-decoration:underline" [routerLink]="['Register', {role:'Author'}]">Become an author.</a>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+    </div>

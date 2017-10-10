@@ -1,0 +1,246 @@
+﻿<div class="container col-md-12">
+  <br />
+
+  <div class="row">
+    <div class="col-md-2">
+      <!-- this is ng2-table filtering directive usage -->
+      <span>Filter by Name</span>
+      <input *ngIf="configTwo.filtering" placeholder="Filter"
+             [ngTableFiltering]="configTwo.filtering"
+             (tableChanged)="ChangeTable(configTwo)" />
+    </div>
+    <div class="col-md-2">
+      <span class="textgray">Items Per Page</span>
+      <input type="number" min="0" [(ngModel)]="config.itemsPerPage">
+    </div>
+    <div class="col-md-2">
+      <span class="textgray">Current Page</span>
+      <input type="number" min="0" [(ngModel)]="config.currentPage">
+    </div>
+    <div class="col-md-1">
+      <span class="textgray">Max Size</span>
+      <input type="number" min="5" max="100" [(ngModel)]="maxSize">
+    </div>
+    <div class="col-md-2 col-md-offset-3 text-right">
+      <br /> 
+      <!-- MODAL buttons -->
+      <button *ngIf="!isAuthenticated" type="button" data-target="#addremoveLogin" data-toggle="modal" class="btn btn-sm btn-danger">
+          <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Add Member
+      </button>
+
+      <div *ngIf="isAuthenticated">
+        <button  *ngIf="!isAllowed" class="btn btn-sm btn-success" data-target="#addDialog" data-toggle="modal">
+              <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Add  Member
+        </button>
+        <button *ngIf="isAllowed" class="btn btn-sm btn-success" (click)="addMember(teamid)">
+            <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Add Member
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <br />
+
+  <div class="row">
+    <!-- table-responsive provides a slider on the bottom of the table when screen not wide -->
+    <div class="table-responsive">
+      <!-- table-striped provides difference in row table-bordered provides borders between row and column
+            table-hover provides hover functionality of individual rows table-condensed makes the padding between the row smaller -->
+      <table class="table table-striped table-hover table-condensed">
+
+        <thead class="">
+          <tr>
+            <!--<th>#</th>-->
+            <th class="col-md-3 smalltext" style="vertical-align:middle;">         
+              <span class="textgray text-uppercase" style="margin-left:20px;vertical-align:middle;">Name</span>
+                <button class="btn btn-sm btn-info" (click)="sortTable('Name')">
+                  <span *ngIf="isNameAsc" class="glyphicon glyphicon-chevron-down"></span>
+                  <span *ngIf="!isNameAsc" class="glyphicon glyphicon-chevron-up"></span>
+                </button>              
+            </th>
+            <th class="col-md-2 smalltext" style="vertical-align:middle;">
+              <span class="textgray text-uppercase" style="vertical-align:middle;">User Name</span>
+              <button class="btn btn-sm btn-info" (click)="sortTable('Username')">
+                <span *ngIf="isUsernameAsc" class="glyphicon glyphicon-chevron-down"></span>
+                <span *ngIf="!isUsernameAsc" class="glyphicon glyphicon-chevron-up"></span>
+              </button>
+            </th>
+            <th class="col-md-2 smalltext" style="vertical-align:middle;">
+              <span class="textgray text-uppercase" style="vertical-align:middle;">Level</span>
+              <button class="btn btn-sm btn-info" (click)="sortTable('LevelTitle')">
+                <span *ngIf="isLevelAsc" class="glyphicon glyphicon-chevron-down"></span>
+                <span *ngIf="!isLevelAsc" class="glyphicon glyphicon-chevron-up"></span>
+              </button>
+            </th>
+            <th class="col-md-3 smalltext" style="vertical-align:middle;">
+              <span class="textgray text-uppercase" style="vertical-align:middle;">Position</span>
+              <button class="btn btn-sm btn-info" (click)="sortTable('PositionTitle')">
+                <span *ngIf="isPositionAsc" class="glyphicon glyphicon-chevron-down"></span>
+                <span *ngIf="!isPositionAsc" class="glyphicon glyphicon-chevron-up"></span>
+              </button>
+            </th>
+            <th class="col-md-2 smalltext" style="vertical-align:middle;">
+              <span class="textgray text-uppercase" style="vertical-align:middle;">Manager</span>
+              <button class="btn btn-sm btn-info" (click)="sortTable('MemberManager')">
+                <span *ngIf="isManagerAsc" class="glyphicon glyphicon-chevron-down"></span>
+                <span *ngIf="!isManagerAsc" class="glyphicon glyphicon-chevron-up"></span>
+              </button>
+            </th>
+            <th class="col-md-2 smalltext textgray text-uppercase" style="vertical-align:middle;">Remove Member</th>
+          </tr>
+
+        </thead>
+
+        <tr *ngFor="let member of rows | paginate : config">
+          <!--<td scope="row">{{ member.Id }}</td>-->
+          <td class="col-md-3" style="vertical-align:middle;">
+            <a href="" [routerLink]="['Member', {id: member.Id, idteam:teamid} ]" class="text-success smalltext text-uppercase">
+              <span style="margin-left:20px">{{ member.Name }}</span>
+            </a>
+          </td>
+          <td class="col-md-2 smalltext textgray text-uppercase" style="vertical-align:middle;">{{ member.AtoUsername }}</td>
+          <td class="col-md-2 smalltext textgray text-uppercase" style="vertical-align:middle;">{{ member.LevelTitle }}</td>
+          <td class="col-md-2 smalltext textgray text-uppercase" style="vertical-align:middle;">{{ member.PositionTitle }}</td>
+          <td class="col-md-2 smalltext textgray text-uppercase" style="vertical-align:middle;">{{ member.Manager  }}</td>
+
+            <td class="col-md-2 text-center" style="vertical-align:middle;">
+                <!-- MODAL buttons -->          
+                <button *ngIf="!isAuthenticated" type="button" data-target="#addremoveLogin" data-toggle="modal" class="btn btn-sm btn-danger">
+                    <span class="glyphicon glyphicon-trash"></span>&nbsp; Remove Member
+                </button>
+
+                <div *ngIf="isAuthenticated">
+                    <a *ngIf="!isAllowed" href="#removeDialog" class="btn btn-sm btn-danger" data-toggle="modal">
+                      <span class="glyphicon glyphicon-trash"></span>&nbsp; Remove Member
+                    </a>                    
+                    <button *ngIf="isAllowed" type="button" data-target="#removeAllowed" data-memberid=(member.Id) data-toggle="modal"
+                                class="btn btn-sm btn-danger" (click)="passToModal(member)"> 
+                            <span class="glyphicon glyphicon-trash"></span>&nbsp; Remove Member
+                    </button>
+                </div>                
+            </td>
+        </tr>
+      </table>
+
+      <pagination *ngIf="configTwo.paging"
+                  disable="authoHide"
+                  class="pagination-sm"
+                  [(ngModel)]="config.currentPage"
+                  [totalItems]="length"
+                  [itemsPerPage]="config.itemsPerPage"
+                  [maxSize]="maxSize"
+                  [boundaryLinks]="true"
+                  (pageChanged)="ChangeTable(configTwo, $event)"
+                  (numPages)="numPages = $event">
+      </pagination>
+    </div>
+  </div>
+
+  <my-spinner [isRunning]="_isRequesting"></my-spinner>
+
+</div>
+
+
+<!-- MODAL form to show when add/remove member is clicked and user is not logged in-->
+<div class="modal fade" id="addremoveLogin" tabindex="-1" role="dialog" aria-labelledby="AddRemoveLogin">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <!-- this will introduce a x button in the corner of the modal dialog which can be used to close the dialog box -->
+        <a href="#" class="close" data-dismiss="modal">&times;</a>
+        <h4 class="text-warning"><span><i class="glyphicon glyphicon-exclamation-sign"></i></span>&nbsp;Login Warning!</h4>
+        <!--<h5 class="modal-title text-warning" id="AddRemoveLogin">Login Dialog</h5>-->
+      </div>
+
+      <div class="modal-body text-warning">
+        <p>You need to login to do that action. Do you want to log-in/sign-in?</p>      
+      </div>
+
+      <div class="modal-footer">                
+          <button class="btn btn-danger" data-dismiss="modal">No</button>
+          <button class="btn btn-success" [routerLink]="['Login']" data-dismiss="modal">Yes</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- MODAL end of modal form -->
+
+
+  <!-- MODAL form to show it when add member is clicked and user not allowed -->
+<div class="modal fade" id="addDialog" [hidden]="hideModal" role="dialog" tabindex="-1" aria-labelledby="AddWarning">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- this will introduce a x button in the corner of the modal dialog which can be used to close the dialog box -->
+        <a href="#" class="close" data-dismiss="modal">&times;</a>
+        <h4 *ngIf="!isAllowed" class="text-warning"><span><i class="glyphicon glyphicon-exclamation-sign"></i></span>&nbsp;Add Member Warning</h4>
+        <!--<h5 class="modal-title text-warning" id="AddWarning">Add Member Warning</h5>-->
+      </div>
+      <div *ngIf="!isAllowed" class="modal-body text-warning">
+        <p>You have no privileges to add new team member!</p>
+      </div>
+      <div *ngIf="!isAllowed" class="modal-footer">
+        <button class="btn btn-warning" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MODAL end of modal form -->
+
+
+<!-- MODAL form to show it when remove member is clicked when user not allowed -->
+<div class="modal fade" id="removeDialog" role="dialog" tabindex="-1"   aria-labelledby="RemoveWarning">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- this will introduce a x button in the corner of the modal dialog which can be used to close the dialog box -->
+        <a href="#" class="close" data-dismiss="modal">&times;</a>
+        <h4 *ngIf="!isAllowed" class="text-warning"><span><i class="glyphicon glyphicon-exclamation-sign"></i></span>&nbsp;Remove Member Warning!</h4>
+        <!--<h5 class="modal-title text-warning" id="RemoveWarning">Remove Member Warning</h5>-->
+      </div>
+      <div *ngIf="!isAllowed" class="modal-body text-warning">
+        <p>You have no privileges to remove the team member!</p>
+      </div>
+      <div *ngIf="!isAllowed" class="modal-footer">
+        <button class="btn btn-warning" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MODAL end of modal form -->
+
+
+<!-- MODAL form to show it when remove member is clicked when user is allowed -->
+<div class="modal fade" id="removeAllowed" tabindex="-1" role="dialog" aria-labelledby="RemoveMember">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <!-- this will introduce a x button in the corner of the modal dialog which can be used to close the dialog box -->
+        <a href="#" class="close" data-dismiss="modal">&times;</a>
+        <h4 class="text-warning"><span><i class="glyphicon glyphicon-exclamation-sign"></i></span>&nbsp;Remove Member Warning!</h4>
+        <!--<h5 class="modal-title text-warning" id="RemoveMember">Remove Member Warning</h5>-->
+      </div>
+
+      <div class="modal-body text-warning">
+        <div *ngIf="!isManager"><p>Are you sure you want to delete this member?</p></div>
+        <div *ngIf="isManager"><p>Manager can no be removed from the team. Please update the team's manager before removing this manager!</p></div>
+      </div>
+
+      <div class="modal-footer">
+        <div *ngIf="isManager">
+          <button class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        <div *ngIf="!isManager">
+          <button class="btn btn-danger" data-dismiss="modal">No</button>
+          <button class="btn btn-success" (click)="removeMember(memberIdToBeRemoved)" data-dismiss="modal">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MODAL end of modal form -->
+
+
