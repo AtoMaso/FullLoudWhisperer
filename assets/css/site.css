@@ -1,0 +1,154 @@
+﻿body {
+    margin-top: 70px;    
+}
+
+input {
+     background-color:#656565;   
+     color:white;
+}
+
+/* this is the fix for the browser suggestion fill */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-box-shadow: 0 0 0px 1000px #656565 inset;
+    -webkit-text-fill-color:white;
+}
+
+
+.linkcolor {
+    color:lightseagreen;
+}
+
+.inputtext {
+     background-color:#656565;
+     color:white;
+}
+
+/*text styles*/
+.extrasmalltext {
+  font-family:Verdana;
+  font-size:x-small;
+}
+
+.extrasmalltextcentred {
+  font-family:Verdana;
+  font-size:11px;
+  text-align:center;
+}
+
+.tabletext {
+    font-size:medium;
+}
+
+.smalltext {
+  font-family:Verdana;
+  font-size:small;
+}
+
+.smalltextbold {
+  font-family:Verdana;
+  font-size:small;
+  font-weight:bold;
+}
+
+.smalltextcentred {
+  font-family:Verdana;
+  font-size:small;
+  text-align:center;
+}
+
+.textgray {
+    color:darkgray;
+}
+
+
+.mediumtext {
+  font-family:Verdana;
+  font-size:medium;
+}
+
+
+.mediumtextcentered {
+  font-family:Verdana;
+  font-size:medium;
+  text-align:center;
+}
+
+
+.largetext {
+  font-family:Verdana;
+  font-size:large;
+}
+
+
+.largetextcentered {
+  font-family:Verdana;
+  font-size:large;
+  text-align:center;
+}
+
+/* used on the add forms */
+.ng-valid[required] {
+  border-left: 7px solid #42A948; /* green */
+}
+
+.ng-invalid {
+  border-left: 7px solid #a94442; /* red */
+}
+
+/* used on the app component */
+.backgroundimg {
+    background-image: url(/assets/images/backgrounds/vertical_cloth.png);
+    height:50%;
+    background-repeat:repeat;
+    border:2px solid #292929;
+}
+
+.verticalline {
+    border-left: 1px solid DarkGray;
+}
+
+.linostyle {
+ list-style-type:none;
+ margin-left:-35px
+}
+
+.hrstyle {
+  border: 1px solid Darkgray;
+}
+
+.lineargradient {
+	height:100px;
+	border:1px solid black;
+	padding:10px;
+	background: lightyellow;
+
+	/* Safari and Google Chrome */
+	background: -webkit-linear-gradient(bottom left, Gray, Lightgray, Gray);
+
+	/* Firefox */
+	background: -moz-linear-gradient(bottom left, Gray, Lightgray, Gray);
+
+	/* Opera */
+	background: -o-linear-gradient(bottom left, Gray, Lightgray, Gray);
+
+	/* Internet Explorer */
+	background: -ms-linear-gradient(bottom left,Gray, Lightgray, Gray);
+
+	/* W3C Standard */
+	background: linear-gradient(to top right,Gray, Lightgray, Gray);
+}
+
+
+
+
+
+
+
+
+
+
+
