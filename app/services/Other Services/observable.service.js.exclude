@@ -1,0 +1,106 @@
+System.register(['angular2/core', 'angular2/http', '../config', 'rxjs/Rx'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
+    var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+    var __metadata = (this && this.__metadata) || function (k, v) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+    };
+    var __param = (this && this.__param) || function (paramIndex, decorator) {
+        return function (target, key) { decorator(target, key, paramIndex); }
+    };
+    var core_1, http_1, config_1, Rx_1;
+    var articlesUrl, ObservableService;
+    return {
+        setters:[
+            function (core_1_1) {
+                core_1 = core_1_1;
+            },
+            function (http_1_1) {
+                http_1 = http_1_1;
+            },
+            function (config_1_1) {
+                config_1 = config_1_1;
+            },
+            function (Rx_1_1) {
+                Rx_1 = Rx_1_1;
+            }],
+        execute: function() {
+            articlesUrl = config_1.CONFIG.baseUrls.articles;
+            ObservableService = (function () {
+                function ObservableService(_http) {
+                    this._http = _http;
+                }
+                ;
+                ObservableService.prototype.getObservable = function () {
+                    var promise = new Promise(function (resolve) {
+                        setTimeout(function () {
+                            resolve('Promise timeout');
+                        }, 2000);
+                    });
+                    promise.then(function (value) { return console.log(value); });
+                    var stream$ = new Rx_1.Observable(function (observer) {
+                        var timeout = setTimeout(function () {
+                            observer.next('observer timeout');
+                        }, 2000);
+                        return function () {
+                            clearTimeout(timeout);
+                        };
+                    });
+                    // disposiable is returned from subscribe
+                    var disposable = stream$.subscribe(function (value) { return console.log(value); });
+                    // and the disposable can be unsubscribed, in this case wrapped in timeout
+                    // in 1 second which can cancel the subscribtion
+                    setTimeout(function () {
+                        disposable.unsubscribe();
+                    }, 1000);
+                };
+                ObservableService.prototype.getObservableTwo = function () {
+                    //let stream$ = new Observable(observer => {
+                    //    let count = 0;
+                    //    let interval = setInterval(() => {
+                    //        observer.next(count++);
+                    //    }, 1000);
+                    //    return () => {
+                    //        clearInterval(interval);
+                    //    }
+                    //});  
+                    //stream$.subscribe(value => console.log(value));
+                    // gets only the even responses with 'filter' method
+                    //stream$.filter((value: number) => value % 2 === 0)
+                    //    .subscribe(value => console.log(value));
+                    // gets only the multiple response with method 'map'
+                    //stream$.map((value: number) => value * value)
+                    //    .subscribe(value => console.log(value));
+                    var incBtn = document.getElementById('increment');
+                    var decBtn = document.getElementById('decrement');
+                    var counter = document.getElementById('counter');
+                    var increment$ = Rx_1.Observable.fromEvent(incBtn, 'click');
+                    var decrement$ = Rx_1.Observable.fromEvent(decBtn, 'click');
+                    //increment$.subscribe(event => console.log(event));
+                    //decrement$.subscribe(event => console.log(event));
+                    var clicks$ = Rx_1.Observable
+                        .merge(increment$, decrement$)
+                        .map(function (event) { return parseInt(event.target.value, 10); });
+                    var total$ = clicks$
+                        .scan(function (total, value) { return total + value; }, 0);
+                    total$.subscribe(function (total) {
+                        counter.innerHTML = total.toString();
+                    });
+                };
+                ObservableService = __decorate([
+                    core_1.Injectable(),
+                    __param(0, core_1.Inject(http_1.Http)), 
+                    __metadata('design:paramtypes', [http_1.Http])
+                ], ObservableService);
+                return ObservableService;
+            }());
+            exports_1("ObservableService", ObservableService);
+        }
+    }
+});
+//# sourceMappingURL=observable.service.js.map

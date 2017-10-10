@@ -1,0 +1,95 @@
+﻿import { Inject, Injectable } from 'angular2/core';
+import { Http, HTTP_PROVIDERS,  Response } from 'angular2/http';
+import { CONFIG } from '../config';
+
+import { Observable } from 'rxjs/Rx';
+import 'rxjs/Rx';
+
+import { Article, Author } from '../helpers/classes';
+import { ArticleInterface} from '../helpers/interfaces';
+
+let articlesUrl = CONFIG.baseUrls.articles;
+
+
+@Injectable()
+export class ObservableService {   
+
+    constructor( @Inject(Http) private _http: Http) { };
+
+    getObservable() {
+
+        let promise = new Promise(resolve => {
+            setTimeout(() => {
+                resolve('Promise timeout');
+            }, 2000);
+        }
+        );
+        promise.then(value => console.log(value));
+
+        let stream$ = new Observable(observer => {
+            let timeout = setTimeout(() => {
+                observer.next('observer timeout');
+            }, 2000);
+
+            return () => {
+                clearTimeout(timeout);
+            }
+        });
+
+        // disposiable is returned from subscribe
+        let disposable = stream$.subscribe(value => console.log(value));
+        // and the disposable can be unsubscribed, in this case wrapped in timeout
+        // in 1 second which can cancel the subscribtion
+        setTimeout(() => {
+            disposable.unsubscribe();
+        }, 1000);
+    }
+
+    getObservableTwo() {
+
+        //let stream$ = new Observable(observer => {
+        //    let count = 0;
+        //    let interval = setInterval(() => {
+        //        observer.next(count++);
+        //    }, 1000);
+
+        //    return () => {
+        //        clearInterval(interval);
+        //    }
+        //});  
+
+
+        //stream$.subscribe(value => console.log(value));
+
+        // gets only the even responses with 'filter' method
+        //stream$.filter((value: number) => value % 2 === 0)
+        //    .subscribe(value => console.log(value));
+
+        // gets only the multiple response with method 'map'
+        //stream$.map((value: number) => value * value)
+        //    .subscribe(value => console.log(value));
+
+
+        let incBtn = document.getElementById('increment');
+        let decBtn = document.getElementById('decrement');
+        let counter = document.getElementById('counter');
+
+        let increment$ = Observable.fromEvent(incBtn, 'click'); 
+        let decrement$ = Observable.fromEvent(decBtn, 'click'); 
+
+        //increment$.subscribe(event => console.log(event));
+        //decrement$.subscribe(event => console.log(event));
+
+        let clicks$ = Observable
+            .merge(increment$, decrement$)
+            .map((event: any) => parseInt(event.target.value, 10));
+
+        let total$ = clicks$
+            .scan((total, value) => total + value, 0);
+
+        total$.subscribe(total => {
+            counter.innerHTML = total.toString();
+        });
+
+    }
+}
