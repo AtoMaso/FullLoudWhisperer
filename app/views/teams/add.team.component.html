@@ -1,0 +1,190 @@
+﻿<div class="container col-md-12">
+
+    <form *ngIf="!isSubmitted" [ngFormModel]="teamForm" (submit)="saveTeam()">
+
+        <div class="row">
+            <div class="col-md-3 col-md-offset-1">
+                <div class="form-group smalltext textgray">
+                    <label for="TeamName">Name</label>
+                    <input type="text" ngControl="TeamName" id="TeamName" [(ngModel)]="_newTeam.TeamName" 
+                              class="form-control inputtext" maxlength="60" required/>
+                    <control-messages control="TeamName" class="text-danger"></control-messages>
+                </div>
+            </div>
+
+            <div class="col-md-7">
+                <div class="form-group smalltext textgray">
+                    <label for="Description">Description</label>
+                    <input type="text" ngControl="Description" id="Description" [(ngModel)]="_newTeam.TeamDescription" 
+                            class="form-control inputtext" maxlength="200" required/>
+                    <control-messages control="Description" class="text-danger"></control-messages>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">      
+             
+            <div class="col-md-3 col-md-offset-1">
+                <table style="background:transparent;">
+                    <tr>
+                        <td>
+                            <div class="form-group smalltext textgray">
+                                <label for="TeamLead">Lead</label>
+                                <select ngControl="TeamLead" id="TeamLead" [(ngModel)]="_newTeam.TeamLeadId" class="form-control inputtext" required>
+                                    <option *ngFor="let teamlead of _members" [value]="teamlead.Id">{{ teamlead.Name }}</option>
+                                </select>
+                            </div>           
+                        </td>
+                        <td style="text-indent:5px;">                       
+                            <!-- MODAL buttons -->
+                            <a *ngIf="!isAuthenticated" href="" class="btn btn-sm btn-success" [routerLink]="['AddMember']">Add New</a>
+                            <div *ngIf="isAuthenticated">
+                                <button *ngIf="!isAllowed" class="btn btn-sm btn-success" data-target="#addDialog" data-toggle="modal">Add New</button>
+                                <button *ngIf="isAllowed" class="btn btn-sm btn-success" (click)="addNewMember()">Add New</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group smalltext textgray">
+                                <label for="ProjectManager">Manager</label>
+                                <select ngControl="ProjectManager" id="ProjectManager" [(ngModel)]="_newTeam.ProjectManagerId" class="form-control inputtext" required>
+                                    <option *ngFor="let manager of _members" [value]="manager.Id">{{ manager.Name }}</option>
+                                </select>
+                            </div>
+                        </td>                       
+                        <td style="text-indent:5px;">                       
+                            <!-- MODAL buttons -->
+                            <a *ngIf="!isAuthenticated" href="" class="btn btn-sm btn-success" [routerLink]="['AddMember']">Add New</a>
+                            <div *ngIf="isAuthenticated">
+                                <button *ngIf="!isAllowed" class="btn btn-sm btn-success" data-target="#addDialog" data-toggle="modal">Add New</button>
+                                <button *ngIf="isAllowed" class="btn btn-sm btn-success" (click)="addNewMember()">Add New</button>
+                            </div>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group smalltext textgray">
+                                <label for="ProjectDirector">Director</label>
+                                <select ngControl="ProjectDirector" id="ProjectDirector" [(ngModel)]="_newTeam.ProjectDirectorId" class="form-control inputtext" required>
+                                    <option *ngFor="let director of _members" [value]="director.Id">{{ director.Name }}</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td style="text-indent:5px;">                            
+                            <!-- MODAL buttons -->
+                            <a *ngIf="!isAuthenticated" href="" class="btn btn-sm btn-success" [routerLink]="['AddMember']">Add New</a>
+                            <div *ngIf="isAuthenticated">
+                                <button *ngIf="!isAllowed" class="btn btn-sm btn-success" data-target="#addDialog" data-toggle="modal">Add New</button>
+                                <button *ngIf="isAllowed" class="btn btn-sm btn-success" (click)="addNewMember()">Add New</button>
+                            </div>
+
+                        </td>
+                    </tr>
+                </table>                                                                                            
+            </div>
+
+     
+            <div class="col-md-3">
+                    <div class="form-group smalltext textgray">
+                        <label for="BusinessLine">Business Line</label>
+                        <select ngControl="BusinessLine" id="BusinessLine" [(ngModel)]="_newTeam.BusinessLineId" class="form-control inputtext">
+                            <option *ngFor="let line of _businesslines" [value]="line.BusinessLineId">{{ line.BusinessLineName }}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group smalltext textgray">
+                        <label for="Location">Location</label>
+                        <select ngControl="Location" id="Location" [(ngModel)]="_newTeam.LocalityId" class="form-control inputtext">
+                            <option *ngFor="let location of _locations" [value]="location.LocalityId">
+                                {{location.Number}} {{location.Street}} {{ location.City}} {{ location.Postcode }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+
+            <div class="col-md-4">
+                <!--<br />-->
+                <div class="panel panel-heading textgray ">
+                    <p><strong>Help</strong></p>
+                    Please provide all the necessary information to create the new team.
+                    If the requred information is not in the drop down provided than use the "Add New" option
+                    or use the "Not on the list" option. The information of the new updated at the later date when 
+                    the missing information becomes available.The name field can be 60 characters long. 
+                    The description field can be 200 characters long.
+                </div>                         
+            </div>
+
+        </div>
+
+        <!--<br/>-->
+
+        <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <div style="text-align:right">
+                <button type="submit" class="btn btn-block btn-success" [disabled]="!teamForm.valid">Submit</button>
+          </div>
+        </div>
+      </div>
+
+    </form>
+
+
+    <div *ngIf="isSubmitted" class="panel panel-heading textgray">
+        <div class="row">
+            <div class="col-md-5 col-md-offset-1">
+                <div><strong class="textgray">Team Name:</strong><span class="text-info">{{ returnedTeam.TeamName }}</span></div>
+                <div><strong class="textgray">Team Description:</strong><span class="text-info"> {{ returnedTeam.TeamDescription }}</span></div>
+               <div><strong class="textgray">Team Lead:</strong> <span class="text-info">{{ returnedTeam.TeamLead }}</span></div>
+            </div>
+
+            <div class="col-md-5">              
+                <div><strong class="textgray">Team Manager:</strong><span class="text-info">{{ returnedTeam.ProjectManager }}</span></div>
+                <div><strong class="textgray">Team Director:</strong><span class="text-info">{{ returnedTeam.ProjectDirector }}</span></div>
+                <div>
+                    <strong class="textgray">Team Location:</strong>
+                  <span class="text-info">
+                    {{ returnedTeam.LocalityNumber }}
+                    {{ returnedTeam.LocalityStreet }}
+                    {{ returnedTeam.LocalitySuburb }}
+                    {{ returnedTeam.LocalityCity }}
+                    {{ returnedTeam.LocalityPostcode }}
+                    {{ returnedTeam.LocalityState }}
+                  </span>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-md-5 col-md-offset-1">
+            <a href="" [routerLink]="['Teams']" class="btn btn-sm btn-success">Back To Teams</a>
+          </div>
+        </div>
+    </div>
+
+    <my-spinner [isRunning]="isRequesting"></my-spinner>
+
+</div>
+
+ <!-- MODAL form to show it when remove member is clicked when user not allowed -->
+<div class="modal" id="addDialog" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- this will introduce a x button in the corner of the modal dialog which can be used to close the dialog box -->
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h5 *ngIf="!isAllowed" class="text-danger"><span><i class="glyphicon glyphicon-question-sign"></i></span>&nbsp;Error</h5>
+            </div>
+            <div *ngIf="!isAllowed" class="modal-body text-danger">
+                <p>You have no privileges to add new member!</p>
+            </div>
+            <div *ngIf="!isAllowed" class="modal-footer">
+                <button class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL end of modal form -->
+

@@ -1,0 +1,63 @@
+﻿<div *ngIf="componentTeam" class="col-md-12">
+
+    <div class="panel panel-info>">
+        <div class="panel-footer">
+            <strong class="textgray">Team Info:</strong>&nbsp;<span class="text-info">{{ componentTeam.TeamDescription }}</span>
+        </div>
+
+        <div class="panel-body">
+            <div class="col-md-4">
+                <div>
+                    <strong class="textgray">Name:</strong>&nbsp;<span class="text-info">{{ componentTeam.TeamName }}</span>
+                </div>
+                <div>
+                    <strong class="textgray">Team Lead:</strong>&nbsp;<span class="text-info">{{ componentTeam.TeamLead }}</span>
+                </div>
+                <div>
+                    <strong class="textgray">Project Manager:</strong>&nbsp;<span class="text-info">{{ componentTeam.ProjectManager }}</span>
+                </div>
+                <div>
+                    <strong class="textgray">Business Line:</strong>&nbsp;<span class="text-info">{{ componentTeam.BusinessLineName }}</span>
+                </div>
+            </div>
+           
+            <div class="col-md-4 ">
+                <div><strong class="textgray">Location</strong></div>
+                <div>
+                    <strong class="textgray">Number:</strong>&nbsp;<span class="text-info">{{ componentTeam.LocalityNumber }}</span>
+                </div>
+                <div>
+                    <strong class="textgray">Street:</strong>&nbsp;<span class="text-info">{{ componentTeam.LocalityStreet }}</span>
+                </div>
+                <div>
+                    <strong class="textgray">Suburb:</strong>&nbsp;<span class="text-info">{{ componentTeam.LocalitySuburb }}</span>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div>
+                    <strong class="textgray">City:</strong>&nbsp;<span class="text-info">{{ componentTeam.LocalityCity }}</span>
+                </div>
+                <div>
+                    <strong class="textgray">Postcode:</strong>&nbsp;<span class="text-info">{{ componentTeam.LocalityPostcode }}</span>
+                </div>
+                <div>
+                    <strong class="textgray">State:</strong>&nbsp;<span class="text-info">{{ componentTeam.LocalityState }}</span>
+                </div>
+                <div>                   
+                    <a href="" [routerLink]="['Members', {teamid: componentTeam.TeamId}]" class="text-info" style="text-decoration:underline">
+                        <strong>Team Members...</strong>
+                    </a>                   
+                </div>
+            </div>
+                 
+        </div>
+
+        <div class="panel-footer">
+            <strong class="textgray">Project Director:</strong>&nbsp;<span class="text-info">{{ componentTeam.ProjectDirector }}</span>
+        </div>
+    </div>
+
+    <my-spinner [isRunning]="isRequesting"></my-spinner>
+
+</div>
