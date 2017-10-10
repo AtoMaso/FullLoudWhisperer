@@ -1,0 +1,758 @@
+﻿{
+  "data": [
+    {
+      "id": "PM0",
+      "type": "warning",
+      "text": "No message!!!"
+    },
+    {
+      "id": "PMGI",
+      "type": "warning",
+      "text": "Application could not retrieve the images. Please contact the application administration."
+    },
+
+
+
+    {
+      "id": "PMNOAs",
+      "type": "warning",
+      "text": "There are no articles associated with that author."
+    },
+    {
+      "id": "PMGAs",
+      "type": "error",
+      "text": "Application could not retrieve the articles. Please contact the application administration."
+    },
+    {
+      "id": "PMGA",
+      "type": "error",
+      "text": "Application could not retrieve the article. Please contact the application administration."
+    },
+    {
+      "id": "PMAA",
+      "type": "error",
+      "text": "Application could not add the new article. Please contact the application administration."
+    },
+    {
+      "id": "PMAAS",
+      "type": "success",
+      "text": "The new article with the detail below has been added to the apllication store."
+    },
+    {
+      "id": "PMUA",
+      "type": "error",
+      "text": "Application could not update the article. Please contact the application administration."
+    },
+    {
+      "id": "PMUAS",
+      "type": "success",
+      "text": "The article has been updated."
+    },
+    {
+      "id": "PMRA",
+      "type": "error",
+      "text": "Application could not remove the article. Please contact the application administration."
+    },
+    {
+      "id": "PMRAS",
+      "type": "success",
+      "text": "The article and all associated attachements have been removed from the application store!"
+    },
+    {
+      "id": "PMNPAA",
+      "type": "warning",
+      "text": "You have no privileges to add new article to the application!"
+    },
+    {
+      "id": "PMNPRA",
+      "type": "warning",
+      "text": "You have no privileges to remove the article from the application!"
+    },
+
+
+
+    {
+      "id": "PMNOAUs",
+      "type": "warning",
+      "text": "There are no authors in the application!"
+    },
+    {
+      "id": "PMGAUs",
+      "type": "error",
+      "text": "Application could not retrieve the authors. Please contact the application administration."
+    },
+    {
+      "id": "PMGAU",
+      "type": "error",
+      "text": "Application could not retrieve the author. Please contact the application administration."
+    },
+    {
+      "id": "PMAAU",
+      "type": "error",
+      "text": "Application could not add the new author. Please contact the application administration."
+    },
+    {
+      "id": "PMAAUS",
+      "type": "success",
+      "text": "The new author has been added to the application."
+    },
+    {
+      "id": "PMUAU",
+      "type": "error",
+      "text": "Application could not update the author. Please contact the application administration."
+    },
+    {
+      "id": "PMUAUS",
+      "type": "success",
+      "text": "The author has been updated."
+    },
+    {
+      "id": "PMRAU",
+      "type": "error",
+      "text": "Application could not remove the author. Please contact the application administration."
+    },
+    {
+      "id": "PMRAUS",
+      "type": "success",
+      "text": "The author has been removed from the application!"
+    },
+    {
+      "id": "PMNPAAU",
+      "type": "warning",
+      "text": "You have no privileges to add new author to the application!"
+    },
+    {
+      "id": "PMNPRAU",
+      "type": "warning",
+      "text": "You have no privileges to remove the author from the application!"
+    },
+    {
+      "id": "PMAUE",
+      "type": "warning",
+      "text": "You have no privileges to remove the author from the application!"
+    },
+
+
+
+    {
+      "id": "PMNOTs",
+      "type": "warning",
+      "text": "There are no teams in the application!"
+    },
+    {
+      "id": "PMGTs",
+      "type": "error",
+      "text": "Application could not retrieve the teams. Please contact the application administration."
+    },
+    {
+      "id": "PMGT",
+      "type": "error",
+      "text": "Application could not retrieve the team. Please contact the application administration."
+    },
+    {
+      "id": "PMAT",
+      "type": "error",
+      "text": "Application could not add the new team. Please contact the application administration."
+    },
+    {
+      "id": "PMATS",
+      "type": "success",
+      "text": "The new team has been added to the applicaiton."
+    },
+    {
+      "id": "PMUT",
+      "type": "error",
+      "text": "Application could not update the team. Please contact the application administration."
+    },
+    {
+      "id": "PMUTS",
+      "type": "success",
+      "text": "The team has been updated"
+    },
+    {
+      "id": "PMRT",
+      "type": "error",
+      "text": "Application could not remove the team. Please contact the application administration."
+    },
+    {
+      "id": "PMRTS",
+      "type": "success",
+      "text": "The team has been removed from the application."
+    },
+    {
+      "id": "PMNAT",
+      "type": "warning",
+      "text": "You have no privileges to add new team to the application!"
+    },
+    {
+      "id": "PMNPRT",
+      "type": "warning",
+      "text": "You have no privileges to remove the team from the application!"
+    },
+    {
+      "id": "PMTE",
+      "type": "warning",
+      "text": "Team with that name already exists!"
+    },
+
+
+
+    {
+      "id": "PMNOUs",
+      "type": "warning",
+      "text": "There are no users in the application!"
+    },
+    {
+      "id": "PMGUs",
+      "type": "error",
+      "text": "Application could not retrieve the users. Please contact the application administration."
+    },
+    {
+      "id": "PMGU",
+      "type": "error",
+      "text": "Application could not retrieve the user. Please contact the application administration."
+    },
+    {
+      "id": "PMAU",
+      "type": "error",
+      "text": "Application could not add the new user. Please contact the application administration."
+    },
+    {
+      "id": "PMAUS",
+      "type": "success",
+      "text": "The new user has been added to the application!"
+    },
+    {
+      "id": "PMUU",
+      "type": "error",
+      "text": "Application could not update the user. Please contact the application administration."
+    },
+    {
+      "id": "PMUUS",
+      "type": "success",
+      "text": "The user has been updated!"
+    },
+    {
+      "id": "PMRU",
+      "type": "error",
+      "text": "Application could not remove the user. Please contact the application administration."
+    },
+    {
+      "id": "PMRUS",
+      "type": "success",
+      "text": "The user has been removed from the application!"
+    },
+    {
+      "id": "PMNPAU",
+      "type": "warning",
+      "text": "You have no privileges to add new user to the application!"
+    },
+    {
+      "id": "PMNPRU",
+      "type": "warning",
+      "text": "You have no privileges to remove the user from the application!"
+    },
+
+
+
+    {
+      "id": "PMNOMs",
+      "type": "warning",
+      "text": "There are no members in that team!"
+    },
+    {
+      "id": "PMGMs",
+      "type": "error",
+      "text": "Application could not retrieve the members. Please contact the application administration."
+    },
+    {
+      "id": "PMGM",
+      "type": "error",
+      "text": "Application could not retrieve the member. Please contact the application administration."
+    },
+    {
+      "id": "PMAM",
+      "type": "error",
+      "text": "Application could not add the new member. Please contact the application administration."
+    },
+    {
+      "id": "PMAMS",
+      "type": "success",
+      "text": "The member with the details below has been added to the team!"
+    },
+    {
+      "id": "PMUM",
+      "type": "error",
+      "text": "Application could not update the member. Please contact the application administration."
+    },
+    {
+      "id": "PMUMS",
+      "type": "success",
+      "text": "The member has been updated!"
+    },
+    {
+      "id": "PMRM",
+      "type": "error",
+      "text": "Application could not remove the member. Please contact the application administration."
+    },
+    {
+      "id": "PMRMS",
+      "type": "success",
+      "text": "The member has been removed from the team!"
+    },
+    {
+      "id": "PMNPAM",
+      "type": "warning",
+      "text": "You have no privileges to add new member to the team!"
+    },
+    {
+      "id": "PMNPRM",
+      "type": "warning",
+      "text": "You have no privileges to remove the user from the team!"
+    },
+    {
+      "id": "PMME",
+      "type": "warning",
+      "text": "Member with that email/username already exist in this team!"
+    },
+
+
+
+    {
+      "id": "PMNOLs",
+      "type": "warning",
+      "text": "There are no levels in the application!"
+    },
+    {
+      "id": "PMGLs",
+      "type": "error",
+      "text": "Application could not retrieve the levels. Please contact the application administration."
+    },
+    {
+      "id": "PMGL",
+      "type": "warning",
+      "text": "Application could not retrive the level. Please contact the application administration."
+    },
+    {
+      "id": "PMAL",
+      "type": "error",
+      "text": "Application could not add the new level. Please contact the application administration."
+    },
+    {
+      "id": "PMALS",
+      "type": "success",
+      "text": "The level with the details below has been added to the application!"
+    },
+    {
+      "id": "PMUL",
+      "type": "error",
+      "text": "Application could not update the level. Please contact the application administration."
+    },
+    {
+      "id": "PMULS",
+      "type": "success",
+      "text": "The level has been updated!"
+    },
+    {
+      "id": "PMRL",
+      "type": "error",
+      "text": "Application could not remove the level. Please contact the application administration."
+    },
+    {
+      "id": "PMRLS",
+      "type": "success",
+      "text": "The level has been removed from the application!"
+    },
+    {
+      "id": "PMNPAL",
+      "type": "warning",
+      "text": "You have no privileges to add new level to the application!"
+    },
+    {
+      "id": "PMNPRL",
+      "type": "warning",
+      "text": "You have no privileges to remove the level from the application!"
+    },
+    {
+      "id": "PMLE",
+      "type": "warning",
+      "text": "Level with that code already exist in the application!"
+    },
+
+
+
+    {
+      "id": "PMNOLos",
+      "type": "warning",
+      "text": "There are no locations in the applications!"
+    },
+    {
+      "id": "PMGLos",
+      "type": "error",
+      "text": "Application could not retrieve the localtions. Please contact the application administration."
+    },
+    {
+      "id": "PMGLo",
+      "type": "error",
+      "text": "Application could not retrieve the member. Please contact the application administration."
+    },
+    {
+      "id": "PMALo",
+      "type": "error",
+      "text": "Application could not add the new location. Please contact the application administration."
+    },
+    {
+      "id": "PMALoS",
+      "type": "success",
+      "text": "The location with the details below has been added to the application!"
+    },
+    {
+      "id": "PMULo",
+      "type": "error",
+      "text": "Application could not update the location. Please contact the application administration."
+    },
+    {
+      "id": "PMULoS",
+      "type": "success",
+      "text": "The location has been updated!"
+    },
+    {
+      "id": "PMRLo",
+      "type": "error",
+      "text": "Application could not remove the location. Please contact the application administration."
+    },
+    {
+      "id": "PMRLoS",
+      "type": "success",
+      "text": "The location has been removed from the application!"
+    },
+    {
+      "id": "PMNPALo",
+      "type": "warning",
+      "text": "You have no privileges to add new location to the application!"
+    },
+    {
+      "id": "PMNPRLo",
+      "type": "warning",
+      "text": "You have no privileges to remove the location from the application!"
+    },
+    {
+      "id": "PMLoE",
+      "type": "warning",
+      "text": "Location with the details provided already exist in the application!"
+    },
+
+
+
+    {
+      "id": "PMNOPs",
+      "type": "warning",
+      "text": "There are no positions in the application!"
+    },
+    {
+      "id": "PMGPs",
+      "type": "error",
+      "text": "Application coul not retrieve the positions. Please contact the application administration."
+    },
+    {
+      "id": "PMGP",
+      "type": "error",
+      "text": "Application coul not retrieve the position. Please contact the application administration."
+    },
+    {
+      "id": "PMAP",
+      "type": "error",
+      "text": "Application could not add the new position. Please contact the application administration."
+    },
+    {
+      "id": "PMAPS",
+      "type": "success",
+      "text": "The position with the details below has been added to the application!"
+    },
+    {
+      "id": "PMUP",
+      "type": "error",
+      "text": "Application could not update the position. Please contact the application administration."
+    },
+    {
+      "id": "PMUPS",
+      "type": "success",
+      "text": "The position has been updated!"
+    },
+    {
+      "id": "PMRP",
+      "type": "error",
+      "text": "Application could not remove the position. Please contact the application administration."
+    },
+    {
+      "id": "PMRPS",
+      "type": "success",
+      "text": "The position has been removed from the application!"
+    },
+    {
+      "id": "PMNPAP",
+      "type": "warning",
+      "text": "You have no privileges to add new position to the application!"
+    },
+    {
+      "id": "PMNPRP",
+      "type": "warning",
+      "text": "You have no privileges to remove the position from the application!"
+    },
+    {
+      "id": "PMPE",
+      "type": "warning",
+      "text": "Position with the details provided already exist in this application!"
+    },
+
+
+
+    {
+      "id": "PMNOBLs",
+      "type": "warning",
+      "text": "There are no business lines in the application!"
+    },
+    {
+      "id": "PMGBLs",
+      "type": "еррор",
+      "text": "Application coul not retriеve the business lines. Please contact the application administration."
+    },
+    {
+      "id": "PMGBL",
+      "type": "еррор",
+      "text": "Application coul not retriеve the busines line. Please contact the application administration."
+    },
+    {
+      "id": "PMABL",
+      "type": "error",
+      "text": "Application could not add the new business line. Please contact the application administration."
+    },
+    {
+      "id": "PMABLS",
+      "type": "success",
+      "text": "The business line with the details below has been added to the application!"
+    },
+    {
+      "id": "PMUBL",
+      "type": "error",
+      "text": "Application could not update the business line. Please contact the application administration."
+    },
+    {
+      "id": "PMUBLS",
+      "type": "success",
+      "text": "The business line has been updated!"
+    },
+    {
+      "id": "PMRBL",
+      "type": "error",
+      "text": "Application could not remove the business line. Please contact the application administration."
+    },
+    {
+      "id": "PMRBLS",
+      "type": "success",
+      "text": "The business line has been removed from the application!"
+    },
+    {
+      "id": "PMNPABL",
+      "type": "warning",
+      "text": "You have no privileges to add new business line to the application!"
+    },
+    {
+      "id": "PMNPRBL",
+      "type": "warning",
+      "text": "You have no privileges to remove the business line from the application!"
+    },
+    {
+      "id": "PMBLE",
+      "type": "warning",
+      "text": "Business line with the details provided already exist in this application!"
+    },
+
+
+
+    {
+      "id": "PMNOCs",
+      "type": "warning",
+      "text": "There are no categories in the application!"
+    },
+    {
+      "id": "PMGCs",
+      "type": "еррор",
+      "text": "Application could not retriеve the categories. Please contact the application administration."
+    },
+    {
+      "id": "PMGC",
+      "type": "еррор",
+      "text": "Application could not retriеve the category. Please contact the application administration."
+    },
+    {
+      "id": "PMAC",
+      "type": "error",
+      "text": "Application could not add the new category. Please contact the application administration."
+    },
+    {
+      "id": "PMACS",
+      "type": "success",
+      "text": "The category with the details below has been added to the application!"
+    },
+    {
+      "id": "PMUC",
+      "type": "error",
+      "text": "Application could not update the category. Please contact the application administration."
+    },
+    {
+      "id": "PMUCS",
+      "type": "success",
+      "text": "The category has been updated!"
+    },
+    {
+      "id": "PMRC",
+      "type": "error",
+      "text": "Application could not remove the category. Please contact the application administration."
+    },
+    {
+      "id": "PMRCS",
+      "type": "success",
+      "text": "The category has been removed from the application!"
+    },
+    {
+      "id": "PMNPAC",
+      "type": "warning",
+      "text": "You have no privileges to add new category to the application!"
+    },
+    {
+      "id": "PMNPRC",
+      "type": "warning",
+      "text": "You have no privileges to remove the category from the application!"
+    },
+    {
+      "id": "PMCE",
+      "type": "warning",
+      "text": "Category with the details provided already exist in this application!"
+    },
+
+
+    {
+      "id": "PMNOTMs",
+      "type": "warning",
+      "text": "There are no team members in the application!"
+    },
+    {
+      "id": "PMGTMs",
+      "type": "еррор",
+      "text": "Application could not retriеve the teammembers. Please contact the application administration."
+    },
+    {
+      "id": "PMGTM",
+      "type": "еррор",
+      "text": "Application could not retriеve the teammember record. Please contact the application administration."
+    },
+    {
+      "id": "PMATM",
+      "type": "error",
+      "text": "Application could not add the new teammember record. Please contact the application administration."
+    },
+    {
+      "id": "PMATMS",
+      "type": "success",
+      "text": "The teammember with the details below has been added to the application!"
+    },
+    {
+      "id": "PMUTM",
+      "type": "error",
+      "text": "Application could not update the teammember record. Please contact the application administration."
+    },
+    {
+      "id": "PMUTMS",
+      "type": "success",
+      "text": "The teammember record has been updated!"
+    },
+    {
+      "id": "PMRTM",
+      "type": "error",
+      "text": "Application could not remove the teammeberrecord. Please contact the application administration."
+    },
+    {
+      "id": "PMRTMS",
+      "type": "success",
+      "text": "The teammember record has been removed from the application!"
+    },
+    {
+      "id": "PMNPATM",
+      "type": "warning",
+      "text": "You have no privileges to add new teammber record to the application!"
+    },
+    {
+      "id": "PMNPRTM",
+      "type": "warning",
+      "text": "You have no privileges to remove the teammember record from the application!"
+    },
+    {
+      "id": "PMTME",
+      "type": "warning",
+      "text": "Teammeber record with the details provided already exist in this application!"
+    },
+
+
+    {
+      "id": "PMR",
+      "type": "error",
+      "text": "The application could not finilise your registeration! Please contact the application administration."
+    },
+    {
+      "id": "PMPNE",
+      "type": "error",
+      "text": "The password and confirmation password provided do not match."
+    },
+    {
+      "id": "PMRS",
+      "type": "success",
+      "text": "You have successfully created an author application account."
+    },
+    {
+      "id": "PMRE",
+      "type": "error",
+      "text": "A user with the email provided already exists."
+    },
+    {
+      "id": "PML",
+      "type": "error",
+      "text": "The application could not log you in! Please contact the application administration."
+    },
+    {
+      "id": "PMLP",
+      "type": "warning",
+      "text": "The user name or password provided was invalid."
+    },
+    {
+      "id": "PMUC",
+      "type": "warning",
+      "text": "The password nust have at least one upper character."
+    },
+    {
+      "id": "PMPCP",
+      "type": "warning",
+      "text": "The password and confirmation password do not match."
+    },
+    {
+      "id": "PMLS",
+      "type": "success",
+      "text": "You have logged in."
+    },
+
+
+    {
+      "id": "PMG",
+      "type": "error",
+      "text": "Unexprected error has occured. Please contact the application administration!"
+    },
+    {
+      "id": "PME",
+      "type": "error",
+      "text": ""
+    }
+
+
+
+  ]
+}
